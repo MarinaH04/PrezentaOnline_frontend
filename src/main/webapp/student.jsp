@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>Welcome!</p>
+ <% 
+ 	String username = (String)session.getAttribute("username");
+ 	String firstname = (String)session.getAttribute("firstname");  
+    String lastname = (String)session.getAttribute("lastname");
+ %>
+	<p>Welcome <%= firstname %> <%= lastname %>!</p>
+	<p>Username: <%=username %></p>
 </body>
 </html>
