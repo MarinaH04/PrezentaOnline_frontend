@@ -32,7 +32,7 @@ public class Login2 extends HttpServlet {
 
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
 		JSONObject output = response.getEntity(JSONObject.class);
-
+		
 		String firstname = "";
 		String lastname = "";
 
@@ -42,13 +42,35 @@ public class Login2 extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-//		 System.out.println(username1 + firstname + lastname);
-		System.out.println(output);
 
+		System.out.println(output);
+		
+		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
+		ClientResponse responseCourse = webResourceCourses.type("application/json").get(ClientResponse.class);
+		String courses = responseCourse.getEntity(String.class);
+		
 		session.setAttribute("username", username);
 		session.setAttribute("firstname", firstname);
 		session.setAttribute("lastname", lastname);
+		session.setAttribute("courses", courses);
+		
+		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
+		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);
+		JSONObject outputUserType = responseUserType.getEntity(JSONObject.class);
+		String userType = "";
+		try {
+			userType = outputUserType.getString("tip");
+//			System.out.println(userType);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		if(userType.equals("Student")) {
 		res.sendRedirect("student.jsp");
-
+		}
+		else if(userType.equals("Profesor")) {
+		res.sendRedirect("profesor.jsp");	
+		}
+		else System.out.println("Error");
 	}
 }

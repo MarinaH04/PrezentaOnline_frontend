@@ -7,14 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
- <% 
- 	String username = (String)session.getAttribute("username");
+<%
+	String username = (String)session.getAttribute("username");
  	String firstname = (String)session.getAttribute("firstname");  
     String lastname = (String)session.getAttribute("lastname");
-    String courses = (String)session.getAttribute("courses");
- %>
-	<p>Welcome <%= firstname %> <%= lastname %>!</p>
-	<p>Username: <%=username %></p>
-	<p>Courses: <%=courses %></p>
+%>
+
+<p>Welcome <%=username %></p>
+<p>Teacher: <%=firstname %> <%= lastname %></p>
 </body>
 </html>
