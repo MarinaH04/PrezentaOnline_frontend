@@ -65,12 +65,18 @@ public class Login2 extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 		
-		if(userType.equals("Student")) {
-		res.sendRedirect("student.jsp");
-		}
-		else if(userType.equals("Profesor")) {
-		res.sendRedirect("profesor.jsp");	
-		}
+		if (userType.equals("Student")) {
+			res.sendRedirect("student.jsp");
+		} 
+		
+		else if (userType.equals("Profesor")) {
+			res.sendRedirect("profesor.jsp");
+		} 
+		
+		else if (userType.contentEquals("Admin")) {
+			res.sendRedirect("admin.jsp");
+		} 
+		
 		else System.out.println("Error");
 	}
 }

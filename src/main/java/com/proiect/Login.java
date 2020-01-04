@@ -9,7 +9,7 @@ public class Login {
 		
 		try {
 	Client client = Client.create();
-	WebResource webResource = client.resource("http://localhost:8081/PrezentaOnline/user");
+	WebResource webResource = client.resource("http://localhost:8082/PrezentaOnline/user");
 	
 	ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
 	

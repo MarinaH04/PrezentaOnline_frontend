@@ -10,6 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
+  
 		<servlet-name>adc</servlet-name>
 		<servlet-class>com.proiect.Servlets.Login2</servlet-class>
 	</servlet>
@@ -18,4 +19,5 @@
 		<servlet-name>adc</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	
 </web-app>
