@@ -29,6 +29,7 @@
 		Type: <select name="tip">
 			<option>Profesor</option>
 			<option>Student</option>
+			<option>Admin</option>
 		</select><br>
 		<br> <input type="submit" name="add" value="add">
 	</form>
