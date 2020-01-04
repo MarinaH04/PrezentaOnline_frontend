@@ -73,7 +73,7 @@ public class Login2 extends HttpServlet {
 			res.sendRedirect("profesor.jsp");
 		} 
 		
-		else if (userType.contentEquals("Admin")) {
+		else if (userType.equals("Admin")) {
 			res.sendRedirect("admin.jsp");
 		} 
 		

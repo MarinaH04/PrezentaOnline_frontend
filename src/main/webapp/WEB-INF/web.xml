@@ -20,4 +20,15 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	
+	  <servlet>
+  
+		<servlet-name>inserted</servlet-name>
+		<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>inserted</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
