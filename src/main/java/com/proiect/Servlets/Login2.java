@@ -1,6 +1,8 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -19,6 +22,7 @@ public class Login2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
+	@SuppressWarnings("unchecked")
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
@@ -47,12 +51,27 @@ public class Login2 extends HttpServlet {
 		
 		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
 		ClientResponse responseCourse = webResourceCourses.type("application/json").get(ClientResponse.class);
-		String courses = responseCourse.getEntity(String.class);
+		JSONObject resultCourse = responseCourse.getEntity(JSONObject.class);
+//		System.out.println(resultCourse);
+		String courses = "";
+		try {
+			courses = resultCourse.getString("courses");
+		} catch (Exception e) {
+		}
+		JSONArray jArray = new JSONArray();
+		try {
+			jArray = resultCourse.getJSONArray("courses");
+		} catch (JSONException e1) {
+			e1.printStackTrace();
+		}
+		System.out.println(jArray);
+		System.out.println(jArray.length());
 		
 		session.setAttribute("username", username);
 		session.setAttribute("firstname", firstname);
 		session.setAttribute("lastname", lastname);
 		session.setAttribute("courses", courses);
+		session.setAttribute("lista", jArray);
 		
 		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
 		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);
