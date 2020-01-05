@@ -1,8 +1,6 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +20,7 @@ public class Login2 extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	@SuppressWarnings("unchecked")
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
- 
+<%@ page import="org.codehaus.jettison.json.JSONArray" %> 
+<%@ page import="org.codehaus.jettison.json.JSONObject" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,21 +14,34 @@
  	String firstname = (String)session.getAttribute("firstname");  
     String lastname = (String)session.getAttribute("lastname");
     String courses = (String)session.getAttribute("courses");
-
+	JSONArray lista = (JSONArray) session.getAttribute("lista");
  %>
 	<p>Welcome <%= firstname %> <%= lastname %>!</p>
 	<p>Username: <%=username %></p>
 	<p>Courses: <%=courses %></p>
 
+
 	<table>
-	<tr>
-		<th>Cursuri</th>
-		<th>Luni</th>
-		<th>Marti</th>
-		<th>Miercuri</th>
-		<th>Joi</th>
-		<th>Vineri</th>
-	</tr>
+		<tr>
+			<th>Cursuri</th>
+			<th>Luni</th>
+			<th>Marti</th>
+			<th>Miercuri</th>
+			<th>Joi</th>
+			<th>Vineri</th>
+		</tr>
+		<%
+			int i = 0;
+			while (i < lista.length()) {
+				String obj = lista.getString(i);
+				i++;
+		%>
+		<tr><td><%= obj%></td></tr>
+
+
+		<%
+			}
+		%>
 	</table>
 </body>
 </html>
