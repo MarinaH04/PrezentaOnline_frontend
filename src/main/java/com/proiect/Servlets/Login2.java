@@ -62,14 +62,23 @@ public class Login2 extends HttpServlet {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(jArray);
-		System.out.println(jArray.length());
+		
+		WebResource webResourceUsers = c.resource("http://localhost:8081/PrezentaOnline/courseDTO/users/"+ "Economie");
+		ClientResponse responseUser = webResourceUsers.type("application/json").get(ClientResponse.class);
+		JSONObject resultUser = responseUser.getEntity(JSONObject.class);
+		JSONArray jUsers = new JSONArray();
+		try {
+			jUsers = resultUser.getJSONArray("users");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		session.setAttribute("username", username);
 		session.setAttribute("firstname", firstname);
 		session.setAttribute("lastname", lastname);
 		session.setAttribute("courses", courses);
 		session.setAttribute("lista", jArray);
+		session.setAttribute("users", jUsers);
 		
 		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
 		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);

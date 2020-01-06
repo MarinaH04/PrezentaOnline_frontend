@@ -20,13 +20,26 @@
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	
-	 <servlet>
+	  <servlet>
+  
 		<servlet-name>inserted</servlet-name>
 		<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>inserted</servlet-name>
-		<url-pattern>/insertDTO</url-pattern>
+		<url-pattern>/admin</url-pattern>
 	</servlet-mapping>
+	
+		  <servlet>
+  
+		<servlet-name>insertp</servlet-name>
+		<servlet-class>com.proiect.Servlets.ProfManag</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>insertp</servlet-name>
+		<url-pattern>/prof</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

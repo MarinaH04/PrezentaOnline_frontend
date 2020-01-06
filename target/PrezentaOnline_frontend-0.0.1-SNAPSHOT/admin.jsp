@@ -20,14 +20,16 @@
 		<%=firstname%>
 		<%=lastname%></p>
 	<br>
-	<form action="insertDTO" method="post">
+	<form action="admin" method="post">
 		Username: <input type="text" name="username"><br>
 		Firstname: <input type="text" name="firstname"><br>
 		Lastname: <input type="text" name="lastname"><br> Email:
 		<input type="email" name="email"><br> Password: <input
-			type="password" name="password"><br> Type: <select>
+			type="password" name="password"><br> 
+		Type: <select name="tip">
 			<option>Profesor</option>
 			<option>Student</option>
+			<option>Admin</option>
 		</select><br>
 		<br> <input type="submit" name="add" value="add">
 	</form>

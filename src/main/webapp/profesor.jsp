@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="org.codehaus.jettison.json.JSONArray" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,10 +12,33 @@
 	String username = (String)session.getAttribute("username");
  	String firstname = (String)session.getAttribute("firstname");  
     String lastname = (String)session.getAttribute("lastname");
+    JSONArray users = (JSONArray) session.getAttribute("users");
 %>
 
 <p>Welcome <%=username %></p>
 <p>Profesor: <%=firstname %> <%= lastname %></p>
+	<table>
+		<tr>
+			<th>Studenti</th>
+			<th>Luni</th>
+			<th>Marti</th>
+			<th>Miercuri</th>
+			<th>Joi</th>
+			<th>Vineri</th>
+		</tr>
+		<%
+			int i = 0;
+			while (i < users.length()) {
+				String obj = users.getString(i);
+				i++;
+		%>
+		<tr><td><%= obj%></td></tr>
+
+
+		<%
+			}
+		%>
+	</table>
 
 	<form action="prof" method="post">
 		Username: <input type="text" name="username"><br>
