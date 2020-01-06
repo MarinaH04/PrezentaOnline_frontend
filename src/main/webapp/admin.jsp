@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import="org.codehaus.jettison.json.JSONArray" %> 
+<%@ page import="org.codehaus.jettison.json.JSONObject" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +13,7 @@
 		String username = (String) session.getAttribute("username");
 		String firstname = (String) session.getAttribute("firstname");
 		String lastname = (String) session.getAttribute("lastname");
+		JSONArray lista = (JSONArray) session.getAttribute("admin");
 	%>
 	<p>
 		Welcome
@@ -33,5 +36,8 @@
 		</select><br>
 		<br> <input type="submit" name="add" value="add">
 	</form>
+	
+	Admini:
+	<%=lista %>
 </body>
 </html>

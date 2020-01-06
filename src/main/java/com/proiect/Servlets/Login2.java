@@ -44,13 +44,26 @@ public class Login2 extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
+		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
+		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);
+		JSONObject outputUserType = responseUserType.getEntity(JSONObject.class);
+		String userType = "";
+		try {
+			userType = outputUserType.getString("tip");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 
-		System.out.println(output);
+//		System.out.println(output);
+		
+		WebResource webResourceUsersType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Admin");
+		ClientResponse responseUsersType = webResourceUsersType.type("application/json").get(ClientResponse.class);
+		JSONArray resultUserType = responseUsersType.getEntity(JSONArray.class);
 		
 		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
 		ClientResponse responseCourse = webResourceCourses.type("application/json").get(ClientResponse.class);
 		JSONObject resultCourse = responseCourse.getEntity(JSONObject.class);
-//		System.out.println(resultCourse);
 		String courses = "";
 		try {
 			courses = resultCourse.getString("courses");
@@ -62,15 +75,30 @@ public class Login2 extends HttpServlet {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
+		System.out.println(jArray);
+		String denumire = jArray.toString();
 		
-		WebResource webResourceUsers = c.resource("http://localhost:8081/PrezentaOnline/courseDTO/users/"+ "Economie");
+		JSONArray students = new JSONArray();
+		if (userType.equals("Profesor")) {
+		denumire = denumire.substring(2, denumire.length()-2);
+		WebResource webResourceUsers = c.resource("http://localhost:8081/PrezentaOnline/courseDTO/users/"+ denumire);
 		ClientResponse responseUser = webResourceUsers.type("application/json").get(ClientResponse.class);
 		JSONObject resultUser = responseUser.getEntity(JSONObject.class);
+		System.out.println(resultUser);
 		JSONArray jUsers = new JSONArray();
+		
 		try {
 			jUsers = resultUser.getJSONArray("users");
+			int i = 0;
+			while(i<jUsers.length()) {
+				if(jUsers.getString(i).equals(username)) {}
+				else {
+				students.put(jUsers.getString(i));}
+				i++;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
 		}
 		
 		session.setAttribute("username", username);
@@ -78,18 +106,10 @@ public class Login2 extends HttpServlet {
 		session.setAttribute("lastname", lastname);
 		session.setAttribute("courses", courses);
 		session.setAttribute("lista", jArray);
-		session.setAttribute("users", jUsers);
+		session.setAttribute("users", students);
+		session.setAttribute("admin", resultUserType);
 		
-		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
-		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);
-		JSONObject outputUserType = responseUserType.getEntity(JSONObject.class);
-		String userType = "";
-		try {
-			userType = outputUserType.getString("tip");
-//			System.out.println(userType);
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+
 		
 		if (userType.equals("Student")) {
 			res.sendRedirect("student.jsp");

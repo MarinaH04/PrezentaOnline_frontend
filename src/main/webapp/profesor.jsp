@@ -39,7 +39,8 @@
 			}
 		%>
 	</table>
-
+	<br>
+	<p>Adaugare Student: </p>
 	<form action="prof" method="post">
 		Username: <input type="text" name="username"><br>
 		Firstname: <input type="text" name="firstname"><br>
