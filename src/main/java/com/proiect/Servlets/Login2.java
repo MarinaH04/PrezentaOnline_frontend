@@ -25,7 +25,8 @@ public class Login2 extends HttpServlet {
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		HttpSession session = req.getSession();
-
+		
+		/* **** LOGIN **** */
 		Client c = Client.create();
 
 		WebResource webResource = c.resource("http://localhost:8081/PrezentaOnline/userDTO");
@@ -45,6 +46,7 @@ public class Login2 extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		/*   Found UserType */
 		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
 		ClientResponse responseUserType = webUserType.type("application/json").get(ClientResponse.class);
 		JSONObject outputUserType = responseUserType.getEntity(JSONObject.class);
@@ -55,12 +57,13 @@ public class Login2 extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 
-//		System.out.println(output);
+
 		
 		WebResource webResourceUsersType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Admin");
 		ClientResponse responseUsersType = webResourceUsersType.type("application/json").get(ClientResponse.class);
 		JSONArray resultUserType = responseUsersType.getEntity(JSONArray.class);
 		
+		/* Courses of a student */
 		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
 		ClientResponse responseCourse = webResourceCourses.type("application/json").get(ClientResponse.class);
 		JSONObject resultCourse = responseCourse.getEntity(JSONObject.class);
@@ -77,6 +80,8 @@ public class Login2 extends HttpServlet {
 		}
 		System.out.println(jArray);
 		String denumire = jArray.toString();
+		
+		/* Students of a teacher */
 		
 		JSONArray students = new JSONArray();
 		if (userType.equals("Profesor")) {
