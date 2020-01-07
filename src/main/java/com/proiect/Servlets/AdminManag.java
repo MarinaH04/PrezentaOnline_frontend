@@ -31,15 +31,10 @@ public class AdminManag extends HttpServlet{
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + ",\"tip\":" + tip + "}";
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
 
+		String studenti = req.getParameter("studenti");
+		String profesori = req.getParameter("profesori");
+//		System.out.println(studenti + " " + profesori);
 
-//		String username1 ="";
-//		try {
-//			username1 = output.getString("username");
-//		} catch (Exception e) {
-//			System.out.println(e.getMessage());
-//		}
-//		System.out.println(username1);
-//	System.out.println(firstname + username + lastname + email + password + tip);
 	}
 
 }

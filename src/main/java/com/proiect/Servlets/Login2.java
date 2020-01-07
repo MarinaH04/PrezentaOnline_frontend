@@ -1,6 +1,8 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import com.commons.UserShowDTO;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -58,10 +61,66 @@ public class Login2 extends HttpServlet {
 		}
 
 
-		
+		/* *** Admin page ** */
 		WebResource webResourceUsersType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Admin");
 		ClientResponse responseUsersType = webResourceUsersType.type("application/json").get(ClientResponse.class);
 		JSONArray resultUserType = responseUsersType.getEntity(JSONArray.class);
+		int j = 0;
+		JSONObject obj = new JSONObject();
+		List<UserShowDTO> users = new ArrayList<UserShowDTO>();
+		while (j < resultUserType.length()) {
+			try {
+				obj = resultUserType.getJSONObject(j);
+				UserShowDTO userDTO = new UserShowDTO();
+				userDTO.setUsername(obj.getString("username"));
+				userDTO.setLastname(obj.getString("lastname"));
+				userDTO.setFirstname(obj.getString("firstname"));
+				userDTO.setEmail(obj.getString("email"));
+				users.add(userDTO);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			j++;}
+		
+		WebResource webResourceUsersTypeS = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Student");
+		ClientResponse responseUsersTypeS = webResourceUsersTypeS.type("application/json").get(ClientResponse.class);
+		JSONArray resultUserTypeS = responseUsersTypeS.getEntity(JSONArray.class);
+		int s = 0;
+		JSONObject objS = new JSONObject();
+		List<UserShowDTO> student = new ArrayList<UserShowDTO>();
+		while (s < resultUserTypeS.length()) {
+			try {
+				objS = resultUserTypeS.getJSONObject(s);
+				UserShowDTO userDTO = new UserShowDTO();
+				userDTO.setUsername(objS.getString("username"));
+				userDTO.setLastname(objS.getString("lastname"));
+				userDTO.setFirstname(objS.getString("firstname"));
+				userDTO.setEmail(objS.getString("email"));
+				student.add(userDTO);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			s++;}
+		
+		WebResource webResourceUsersTypeP = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Profesor");
+		ClientResponse responseUsersTypeP = webResourceUsersTypeP.type("application/json").get(ClientResponse.class);
+		JSONArray resultUserTypeP = responseUsersTypeP.getEntity(JSONArray.class);
+		int p = 0;
+		JSONObject objP = new JSONObject();
+		List<UserShowDTO> prof = new ArrayList<UserShowDTO>();
+		while (p < resultUserTypeP.length()) {
+			try {
+				objP = resultUserTypeP.getJSONObject(p);
+				UserShowDTO profDTO = new UserShowDTO();
+				profDTO.setUsername(objP.getString("username"));
+				profDTO.setLastname(objP.getString("lastname"));
+				profDTO.setFirstname(objP.getString("firstname"));
+				profDTO.setEmail(objP.getString("email"));
+				prof.add(profDTO);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			p++;}
 		
 		/* Courses of a student */
 		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
@@ -112,8 +171,9 @@ public class Login2 extends HttpServlet {
 		session.setAttribute("courses", courses);
 		session.setAttribute("lista", jArray);
 		session.setAttribute("users", students);
-		session.setAttribute("admin", resultUserType);
-		
+		session.setAttribute("admin", users);
+		session.setAttribute("student", student);
+		session.setAttribute("prof", prof);
 
 		
 		if (userType.equals("Student")) {

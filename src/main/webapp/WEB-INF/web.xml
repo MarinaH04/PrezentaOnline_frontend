@@ -22,8 +22,8 @@
 
 	<servlet>
 
-		<servlet-name>inserted</servlet-name>
-		<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
+	<servlet-name>inserted</servlet-name>
+	<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -39,6 +39,16 @@
 	<servlet-mapping>
 		<servlet-name>insertp</servlet-name>
 		<url-pattern>/prof</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	<servlet-name>updated</servlet-name>
+	<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>updated</servlet-name>
+		<url-pattern>/update</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
