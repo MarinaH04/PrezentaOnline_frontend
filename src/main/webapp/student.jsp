@@ -43,5 +43,9 @@
 			}
 		%>
 	</table>
+
+	<form action="logout" class="formular_logout" method="post">
+		<input type="submit" value="Log out">
+	</form>
 </body>
 </html>

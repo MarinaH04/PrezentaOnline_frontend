@@ -124,20 +124,20 @@
 	</table>
 	<form action="update" method="post">
 		<select name="studenti">
-		<% for(UserShowDTO stud: student){ %>
+			<% for(UserShowDTO stud: student){ %>
 			<option><%=stud.getUsername() %></option>
-		<%} %>
-		</select>
-		<br>
-		<select name="profesori">
-		<% for(UserShowDTO pr:prof){ %>
+			<%} %>
+		</select> <br> <select name="profesori">
+			<% for(UserShowDTO pr:prof){ %>
 			<option><%=pr.getUsername() %></option>
-		<%} %>
-		</select>
-		<br>
-		<input type="submit" value="Adauga">
-	
+			<%} %>
+		</select> <br> <input type="submit" value="Adauga">
+
 	</form>
-	
+
+	<form action="logout" class="formular_logout" method="post">
+		<input type="submit" value="Log out">
+	</form>
+
 </body>
 </html>

@@ -33,8 +33,10 @@ public class AdminManag extends HttpServlet{
 
 		String studenti = req.getParameter("studenti");
 		String profesori = req.getParameter("profesori");
-//		System.out.println(studenti + " " + profesori);
-
+		
+		WebResource webResourceUpdate = u.resource("http://localhost:8081/PrezentaOnline/userDTO/update");
+		String inputUpdate = "{\"username\":" + studenti + ",\"denumire\":" + profesori +"}";
+		ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
 	}
 
 }

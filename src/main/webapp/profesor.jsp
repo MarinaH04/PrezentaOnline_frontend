@@ -41,16 +41,22 @@
 	</table>
 	<br>
 	<p>Adaugare Student: </p>
+	
 	<form action="prof" method="post">
 		Username: <input type="text" name="username"><br>
 		Firstname: <input type="text" name="firstname"><br>
 		Lastname: <input type="text" name="lastname"><br> Email:
 		<input type="email" name="email"><br> Password: <input
-			type="password" name="password"><br> 
-		Type: <select name="tip">
+			type="password" name="password"><br> Type: <select
+			name="tip">
 			<option>Student</option>
-		</select><br>
-		<br> <input type="submit" name="add" value="add">
+		</select><br> <br> <input type="submit" name="add" value="add">
+	</form>
+
+
+
+	<form action="logout" class="formular_logout" method="post">
+		<input type="submit" value="Log out">
 	</form>
 </body>
 </html>

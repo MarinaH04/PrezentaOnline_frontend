@@ -9,8 +9,8 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
-	<servlet>
 
+	<servlet>
 		<servlet-name>adc</servlet-name>
 		<servlet-class>com.proiect.Servlets.Login2</servlet-class>
 	</servlet>
@@ -21,9 +21,8 @@
 	</servlet-mapping>
 
 	<servlet>
-
-	<servlet-name>inserted</servlet-name>
-	<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
+		<servlet-name>inserted</servlet-name>
+		<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -40,15 +39,25 @@
 		<servlet-name>insertp</servlet-name>
 		<url-pattern>/prof</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
-	<servlet-name>updated</servlet-name>
-	<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
+		<servlet-name>updated</servlet-name>
+		<servlet-class>com.proiect.Servlets.AdminManag</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>updated</servlet-name>
 		<url-pattern>/update</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>logout</servlet-name>
+		<servlet-class>com.proiect.Servlets.Logout</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>logout</servlet-name>
+		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
