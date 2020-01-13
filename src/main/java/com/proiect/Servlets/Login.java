@@ -127,7 +127,9 @@ public class Login extends HttpServlet {
 			}
 			p++;}
 		
-	
+		List<UserShowDTO> studprof = new ArrayList<UserShowDTO>();
+		studprof.addAll(prof);
+		studprof.addAll(student);
 		
 		
 		/* Courses of a student */
@@ -187,6 +189,7 @@ public class Login extends HttpServlet {
 		session.setAttribute("admin", users);
 		session.setAttribute("student", student);
 		session.setAttribute("prof", prof);
+		session.setAttribute("studprof", studprof);
 
 		
 		if (userType.equals("Student")) {

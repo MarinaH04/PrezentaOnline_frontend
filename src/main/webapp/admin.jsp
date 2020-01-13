@@ -20,6 +20,7 @@
 		List<UserShowDTO> users = (List<UserShowDTO>) session.getAttribute("admin");
 		List<UserShowDTO> student = (List<UserShowDTO>) session.getAttribute("student");
 		List<UserShowDTO> prof = (List<UserShowDTO>) session.getAttribute("prof");
+		List<UserShowDTO> studprof = (List<UserShowDTO>) session.getAttribute("studprof");
 	%>
 	<p>
 		Welcome
@@ -145,6 +146,17 @@
 			<%} %>
 		</select> <br> <input type="submit" value="Adauga">
 
+	</form>
+	
+	<p>STERGERE USER!</p>
+	<form action="delete" method="post">
+		<select name="userdelete">
+			<% for(UserShowDTO stud: studprof){ %>
+			<option><%=stud.getUsername() %></option>
+			<%} %>
+
+		</select>
+		<input type="submit" value="delete">
 	</form>
 
 	<form action="logout" class="formular_logout" method="post">
