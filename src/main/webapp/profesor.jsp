@@ -17,6 +17,7 @@
 
 <p>Welcome <%=username %></p>
 <p>Profesor: <%=firstname %> <%= lastname %></p>
+<form action="" method = "post">
 	<table>
 		<tr>
 			<th>Studenti</th>
@@ -32,25 +33,36 @@
 				String obj = users.getString(i);
 				i++;
 		%>
-		<tr><td><%= obj%></td></tr>
+		<tr>
+			<td><%= obj%></td>
+			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+		</tr>
 
 
 		<%
 			}
-		%>
+		%>	
 	</table>
+	<input type="submit" value="Trimite">
+</form>
 	<br>
 	<p>Adaugare Student: </p>
 	
 	<form action="prof" method="post">
 		Username: <input type="text" name="username"><br>
 		Firstname: <input type="text" name="firstname"><br>
-		Lastname: <input type="text" name="lastname"><br> Email:
-		<input type="email" name="email"><br> Password: <input
-			type="password" name="password"><br> Type: <select
-			name="tip">
-			<option>Student</option>
-		</select><br> <br> <input type="submit" name="add" value="add">
+		Lastname: <input type="text" name="lastname"><br> 
+		Email:<input type="email" name="email"><br> 
+		Password: <input type="password" name="password"><br> 
+		Type: <select name="tip">
+				<option>Student</option>
+			  </select>
+		<br> <br> 
+		<input type="submit" name="add" value="add">
 	</form>
 
 

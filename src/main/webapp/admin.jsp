@@ -15,6 +15,8 @@
 		String username = (String) session.getAttribute("username");
 		String firstname = (String) session.getAttribute("firstname");
 		String lastname = (String) session.getAttribute("lastname");
+		String email = (String)session.getAttribute("email");
+		String password = (String)session.getAttribute("password");
 		List<UserShowDTO> users = (List<UserShowDTO>) session.getAttribute("admin");
 		List<UserShowDTO> student = (List<UserShowDTO>) session.getAttribute("student");
 		List<UserShowDTO> prof = (List<UserShowDTO>) session.getAttribute("prof");
@@ -27,6 +29,16 @@
 		<%=firstname%>
 		<%=lastname%></p>
 	<br>
+	<form action="edit" method="post">
+	Username: <input type="text" name="usernamedit" value = <%=username%> readonly>
+	Firstname: <input type="text" name="firstnamedit" value = <%=firstname %>><br>
+	Lastname: <input type="text" name="lastnamedit" value= <%=lastname %>><br>
+	Email: <input type="email" name="emailedit" value=<%=email %>><br>
+	Password: <input type="password" name="passwordedit" value=<%=password %>>
+	<input type="submit" value="Edit">
+	</form>
+	<br><br>
+	Adaugare user:
 	<form action="admin" method="post">
 		Username: <input type="text" name="username"><br>
 		Firstname: <input type="text" name="firstname"><br>

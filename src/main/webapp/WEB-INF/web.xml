@@ -12,12 +12,22 @@
 
 	<servlet>
 		<servlet-name>adc</servlet-name>
-		<servlet-class>com.proiect.Servlets.Login2</servlet-class>
+		<servlet-class>com.proiect.Servlets.Login</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>adc</servlet-name>
 		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>edit</servlet-name>
+		<servlet-class>com.proiect.Servlets.Edit</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>edit</servlet-name>
+		<url-pattern>/edit</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
