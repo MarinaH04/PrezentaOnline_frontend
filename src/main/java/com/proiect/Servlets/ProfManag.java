@@ -23,9 +23,13 @@ public class ProfManag extends HttpServlet {
 		String password = req.getParameter("password");
 		String tip = req.getParameter("tip");
 		
+		
+		
 		Client p = Client.create();
 		WebResource webResource = p.resource("http://localhost:8081/PrezentaOnline/userDTO/insert");
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + ",\"tip\":" + tip + "}";
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
+		
+		
 	}
 }

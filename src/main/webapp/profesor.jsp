@@ -17,35 +17,42 @@
 
 <p>Welcome <%=username %></p>
 <p>Profesor: <%=firstname %> <%= lastname %></p>
-<form action="" method = "post">
+<form action="prezenta" method = "post">
 	<table>
 		<tr>
 			<th>Studenti</th>
-			<th>Luni</th>
-			<th>Marti</th>
-			<th>Miercuri</th>
-			<th>Joi</th>
-			<th>Vineri</th>
+			<th><input type="text" name="date1" value="2020-01-20"></th>
+			<th><input type="text" name="date2" value="2020-01-21"></th>
+			<th><input type="text" name="date3" value="2020-01-22"></th>
+			<th><input type="text" name="date4" value="2020-01-23"></th>
+			<th><input type="text" name="date5" value="2020-01-24"></th>
+			
 		</tr>
 		<%
 			int i = 0;
+			int nrstud = 0;
 			while (i < users.length()) {
 				String obj = users.getString(i);
 				i++;
+				nrstud++;
 		%>
 		<tr>
-			<td><%= obj%></td>
-			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
-			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
-			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
-			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
-			<td><select><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><input type="text" name=<%=obj %> value=<%=obj%> readonly></td>
+			<td><select name = <%=obj + "presence1"%>><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select name = "presence2"><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select name = "presence3"><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select name = "presence4"><option>-</option><option>Yes</option><option>No</option></select></td>
+			<td><select name = "presence5"><option>-</option><option>Yes</option><option>No</option></select></td>
 		</tr>
+
 
 
 		<%
 			}
 		%>	
+		<tr>
+			<td><input type="text" name="nrstudenti" value=<%=nrstud %>></td>
+		</tr>
 	</table>
 	<input type="submit" value="Trimite">
 </form>

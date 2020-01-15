@@ -71,6 +71,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>prezenta</servlet-name>
+		<servlet-class>com.proiect.Servlets.Prezenta</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>prezenta</servlet-name>
+		<url-pattern>/prezenta</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>com.proiect.Servlets.Logout</servlet-class>
 	</servlet>
