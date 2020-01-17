@@ -36,6 +36,8 @@ public class Login extends HttpServlet {
 		String input = "{\"username\":" + username + ",\"password\":" + password + "}";
 
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
+		if(response.getStatus() == 200) {
+		
 		JSONObject output = response.getEntity(JSONObject.class);
 		
 		String firstname = "";
@@ -47,10 +49,14 @@ public class Login extends HttpServlet {
 			firstname = output.getString("firstname");
 			lastname = output.getString("lastname");
 			email = output.getString("email");
+		
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
+		
+		System.out.println(" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ "+firstname.length());
+
 		
 		/*   Finding UserType */
 		WebResource webUserType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/usertype/" + username);
@@ -191,7 +197,7 @@ public class Login extends HttpServlet {
 		session.setAttribute("prof", prof);
 		session.setAttribute("studprof", studprof);
 
-		
+
 		if (userType.equals("Student")) {
 			res.sendRedirect("student.jsp");
 		} 
@@ -203,8 +209,8 @@ public class Login extends HttpServlet {
 		else if (userType.equals("Admin")) {
 			res.sendRedirect("admin.jsp");
 		} 
-		
-		else {System.out.println("Error");
+		}
+		else {
 			res.sendRedirect("Login.jsp");
 		}
 		}
