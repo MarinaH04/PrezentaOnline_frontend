@@ -147,9 +147,9 @@ public class Login extends HttpServlet {
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
-		System.out.println(jArray);
 		String denumire = jArray.toString();
 		
+
 		
 		/* Students of a teacher */
 		

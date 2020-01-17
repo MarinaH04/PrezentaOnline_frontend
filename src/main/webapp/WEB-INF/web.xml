@@ -81,6 +81,16 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>student</servlet-name>
+		<servlet-class>com.proiect.Servlets.StudManag</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>student</servlet-name>
+		<url-pattern>/student</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>com.proiect.Servlets.Logout</servlet-class>
 	</servlet>

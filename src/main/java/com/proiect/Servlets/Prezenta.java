@@ -24,11 +24,7 @@ public class Prezenta extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-		String presence1 = req.getParameter("presence1");
-		String presence2 = req.getParameter("presence2");
-		String presence3 = req.getParameter("presence3");
-		String presence4 = req.getParameter("presence4");
-		String presence5 = req.getParameter("presence5");
+
 		String Marina04 = req.getParameter("Marina04");
 		System.out.println(Marina04);
 		JSONArray students = new JSONArray();
