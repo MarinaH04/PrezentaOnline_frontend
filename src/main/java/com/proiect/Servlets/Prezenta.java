@@ -59,12 +59,13 @@ public class Prezenta extends HttpServlet{
 
 		WebResource webResource = c.resource("http://localhost:8081/PrezentaOnline/prezentaDTO");
 		int j=0;
+		String data = (String) session.getAttribute("date");
 		while(j<students.length()) {
 			try {
 				String username = students.getString(j);
 				String stud = req.getParameter(username);
 				String prez = req.getParameter(username+"presence");
-				String data = req.getParameter("date");
+//				String data = req.getParameter("date");
 				Date date = DateParser.parse(data);
 				Boolean presence = null;
 				if(prez.contentEquals("Yes")) {presence = true;}

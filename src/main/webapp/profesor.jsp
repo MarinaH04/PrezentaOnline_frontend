@@ -37,8 +37,11 @@
 	<form action="addDate" method="post">
 		<select name="date">
 			<option>-</option>
-			<option>2020-01-20</option>
-			<option>2020-01-21</option>
+			<option>2020-01-27</option>
+			<option>2020-01-28</option>
+			<option>2020-01-29</option>
+			<option>2020-01-30</option>
+			<option>2020-01-31</option>
 		</select>
 		<input type="submit" value="Choose">
 	</form>
