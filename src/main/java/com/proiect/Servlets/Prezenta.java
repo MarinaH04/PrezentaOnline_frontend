@@ -31,9 +31,7 @@ public class Prezenta extends HttpServlet{
 		String[] arrOfStr = curs.split(",", 5);
 		String cursprof = arrOfStr[0];
 		cursprof = cursprof.substring(2, cursprof.length()-2);
-		System.out.println("Listaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa "+ cursprof);
-		String Marina04 = req.getParameter("Marina04");
-		System.out.println(Marina04);
+
 		JSONArray students = new JSONArray();
 		
 		
@@ -49,7 +47,7 @@ public class Prezenta extends HttpServlet{
 			jUsers = resultUser.getJSONArray("users");
 			int i = 0;
 			while(i<jUsers.length()) {
-				if(jUsers.getString(i).equals("BaltesN")) {}
+				if(jUsers.getString(i).equals("MorariuP")) {}
 				else {
 				students.put(jUsers.getString(i));}
 				i++;
@@ -65,8 +63,8 @@ public class Prezenta extends HttpServlet{
 			try {
 				String username = students.getString(j);
 				String stud = req.getParameter(username);
-				String prez = req.getParameter(username+"presence1");
-				String data = req.getParameter("date1");
+				String prez = req.getParameter(username+"presence");
+				String data = req.getParameter("date");
 				Date date = DateParser.parse(data);
 				Boolean presence = null;
 				if(prez.contentEquals("Yes")) {presence = true;}
@@ -82,6 +80,11 @@ public class Prezenta extends HttpServlet{
 			}
 			j++;
 		}
+		
+		
+		
 		}
-
+	
+	
+	
 }
