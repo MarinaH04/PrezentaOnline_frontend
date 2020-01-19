@@ -12,5 +12,6 @@
 	<input type="password" name="password" placeholder="Password">
 	<input type="submit" name="submit" value="Log In">
 	</form>
+	<p id ="errMsg"></p>
 </body>
 </html>

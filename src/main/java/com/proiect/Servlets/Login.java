@@ -218,7 +218,7 @@ public class Login extends HttpServlet {
 			RequestDispatcher rs = req.getRequestDispatcher("Login.jsp");
 			PrintWriter out = res.getWriter();
 	        out.write("<html><body><div id='serlvetResponse' >");
-			out.write("<p id='errMsg' style='color: red; font-size: larger;'>Username or Password invalid... !</p>");
+			out.write("<p id='errMsg' style='color: red; font-size: larger;'>Username or Password invalid!</p>");
 			rs.include(req, res);
 		}
 		}

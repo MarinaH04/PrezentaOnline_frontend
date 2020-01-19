@@ -1,7 +1,9 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +31,12 @@ public class AdminManag extends HttpServlet{
 		WebResource webResource = u.resource("http://localhost:8081/PrezentaOnline/userDTO/insert");
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + ",\"tip\":" + tip + "}";
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
-		System.out.println(response);
+		if(!response.equals(null)) {
+			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+			PrintWriter out = res.getWriter();
+			out.write("<p id='updateMsg' style='color: green; '>User succesfully inserted !</p>");
+			rs.include(req, res);
+		}
 		
 		
 		String studenti = req.getParameter("studenti");
@@ -38,7 +45,14 @@ public class AdminManag extends HttpServlet{
 		if(!studenti.equals(null)) {
 		WebResource webResourceUpdate = u.resource("http://localhost:8081/PrezentaOnline/userDTO/update");
 		String inputUpdate = "{\"username\":" + studenti + ",\"denumire\":" + profesori +"}";
-		webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
+		ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
+		if(!responseUpdate.equals(null)) {
+			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+			PrintWriter out = res.getWriter();
+			out.write("<p id='updateMsg' style='color: green; '>Student succesfully assigned to a teacher !</p>");
+			
+			rs.include(req, res);
+		}
 		
 	}
 	}

@@ -69,7 +69,8 @@ public class StudManag extends HttpServlet {
 		
 		}
 		System.out.println(dataPresence);
-
+		session.setAttribute("data", data);
+		session.setAttribute("dataPresence", dataPresence);
 		
 		res.sendRedirect("presence.jsp");
 	}

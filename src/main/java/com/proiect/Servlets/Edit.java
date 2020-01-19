@@ -1,7 +1,9 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +27,12 @@ public class Edit extends HttpServlet {
 
 		WebResource webResource = c.resource("http://localhost:8081/PrezentaOnline/userDTO/edit");
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + "}";
-		webResource.type("application/json").post(ClientResponse.class, input);
-		
+		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
+		if(!response.equals(null)) {
+			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+			PrintWriter out = res.getWriter();
+			out.write("<p id='updateMsg' style='color: green; font-size: larger;'>Data succesfully updated !</p>");
+			rs.include(req, res);
+		}
 	}
 }
