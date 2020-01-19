@@ -24,11 +24,7 @@
 	<table>
 		<tr>
 			<th>Cursuri</th>
-			<th><input type="text" name="2020-01-20" value="2020-01-20"></th>
-			<th><input type="text" name="2020-01-21" value="2020-01-21"></th>
-			<th><input type="text" name="2020-01-22" value="2020-01-22"></th>
-			<th><input type="text" name="2020-01-23" value="2020-01-23"></th>
-			<th><input type="text" name="2020-01-24" value="2020-01-24"></th>
+	
 		</tr>
 		<%
 			int i = 0;

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jettison.json.JSONObject;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -18,7 +17,7 @@ public class AdminManag extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-//		HttpSession session = req.getSession();
+
 		String username = req.getParameter("username");
 		String firstname = req.getParameter("firstname");
 		String lastname = req.getParameter("lastname");
@@ -30,13 +29,18 @@ public class AdminManag extends HttpServlet{
 		WebResource webResource = u.resource("http://localhost:8081/PrezentaOnline/userDTO/insert");
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + ",\"tip\":" + tip + "}";
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
-
+		System.out.println(response);
+		
+		
 		String studenti = req.getParameter("studenti");
 		String profesori = req.getParameter("profesori");
 		
+		if(!studenti.equals(null)) {
 		WebResource webResourceUpdate = u.resource("http://localhost:8081/PrezentaOnline/userDTO/update");
 		String inputUpdate = "{\"username\":" + studenti + ",\"denumire\":" + profesori +"}";
-		ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
+		webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
+		
+	}
 	}
 
 }

@@ -1,8 +1,7 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.Date;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import com.proiect.business.DateParser;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -27,6 +25,7 @@ public class Prezenta extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 		HttpSession session = req.getSession();
 		JSONArray lista = (JSONArray) session.getAttribute("lista");
+		String username = (String) session.getAttribute("username");
 		String curs = lista.toString();
 		String[] arrOfStr = curs.split(",", 5);
 		String cursprof = arrOfStr[0];
@@ -47,7 +46,7 @@ public class Prezenta extends HttpServlet{
 			jUsers = resultUser.getJSONArray("users");
 			int i = 0;
 			while(i<jUsers.length()) {
-				if(jUsers.getString(i).equals("MorariuP")) {}
+				if(jUsers.getString(i).equals(username)) {}
 				else {
 				students.put(jUsers.getString(i));}
 				i++;
@@ -62,23 +61,19 @@ public class Prezenta extends HttpServlet{
 		String data = (String) session.getAttribute("date");
 		while(j<students.length()) {
 			try {
-				String username = students.getString(j);
-				String stud = req.getParameter(username);
-				String prez = req.getParameter(username+"presence");
-//				String data = req.getParameter("date");
-				Date date = DateParser.parse(data);
+				String username_stud = students.getString(j);
+				String stud = req.getParameter(username_stud);
+				String prez = req.getParameter(username_stud+"presence");
 				Boolean presence = null;
 				if(prez.contentEquals("Yes")) {presence = true;}
 				else presence = false;
 				String input = "{\"username\":" + stud + ",\"denumire\":"+ cursprof + ",\"date\":" + data +",\"present\":" + presence + "}";
-				ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
+				webResource.type("application/json").post(ClientResponse.class, input);
 				
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			catch (ParseException ex) {
-				ex.printStackTrace();
-			}
+
 			j++;
 		}
 		

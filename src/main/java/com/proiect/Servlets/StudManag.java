@@ -1,6 +1,9 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,16 +25,21 @@ public class StudManag extends HttpServlet {
 		String username = req.getParameter("username");
 		HttpSession session = req.getSession();
 		JSONArray lista = (JSONArray) session.getAttribute("lista");
-		int i = 0;
+		
+		int j = 0;
 		
 		Client c = Client.create();
 		WebResource webPresence = c.resource("http://localhost:8081/PrezentaOnline/prezentaDTO/presence");
+		List<String> data = new ArrayList<String>(Arrays.asList("2020-01-27","2020-01-28", "2020-01-29", "2020-01-30", "2020-01-31"));
+		List<String> dataPresence = new ArrayList<String>();
+		String pres = "";
+		while(j < data.size()) {
+			int i = 0;
 		while (i < lista.length()) {	
 		
 		try {
 			String obj = lista.getString(i);
-			System.out.println(obj);
-			String presence = "{\"username\":" + username + ",\"denumire\":" + obj + ",\"date\":" + "2020-01-20" + "}";
+			String presence = "{\"username\":" + username + ",\"denumire\":" + obj + ",\"date\":" + data.get(j) + "}";
 			ClientResponse response = webPresence.type("application/json").post(ClientResponse.class, presence);
 			
 			JSONObject output = response.getEntity(JSONObject.class);
@@ -39,6 +47,17 @@ public class StudManag extends HttpServlet {
 			String present = "";
 			present = output.getString("present");
 			System.out.println(present);
+			if(present.equals("true")) {
+				pres="P";
+			}
+			else if(present.equals("false")) {
+				pres = "A";
+			}
+			
+			else pres="-";
+	//		System.out.println("Studentul "+ username +" la materia: " + obj +" in data de: "+data.get(j)+" este " + pres);
+			String dataP = obj + data.get(j) + pres;
+			dataPresence.add(dataP);
 		} 
 		catch (JSONException ex) {
 			ex.printStackTrace();
@@ -46,13 +65,11 @@ public class StudManag extends HttpServlet {
 		i++;
 		}
 
-//		
-//		try {
-//			
-//		} catch (Exception e) {
-//		}
-//		
-//		session.setAttribute("present", present);
+		j++;
+		
+		}
+		System.out.println(dataPresence);
+
 		
 		res.sendRedirect("presence.jsp");
 	}

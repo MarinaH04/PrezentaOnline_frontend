@@ -1,9 +1,11 @@
 package com.proiect.Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,7 +57,6 @@ public class Login extends HttpServlet {
 		}
 		
 		
-		System.out.println(" ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ "+firstname.length());
 
 		
 		/*   Finding UserType */
@@ -199,19 +200,26 @@ public class Login extends HttpServlet {
 
 
 		if (userType.equals("Student")) {
-			res.sendRedirect("student.jsp");
+			RequestDispatcher rs = req.getRequestDispatcher("student.jsp");
+			rs.forward(req, res);
 		} 
 		
 		else if (userType.equals("Profesor")) {
-			res.sendRedirect("profesor.jsp");
+			RequestDispatcher rs = req.getRequestDispatcher("profesor.jsp");
+			rs.forward(req, res);
 		} 
 		
 		else if (userType.equals("Admin")) {
-			res.sendRedirect("admin.jsp");
+			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+			rs.forward(req, res);
 		} 
 		}
 		else {
-			res.sendRedirect("Login.jsp");
+			RequestDispatcher rs = req.getRequestDispatcher("Login.jsp");
+			PrintWriter out = res.getWriter();
+	        out.write("<html><body><div id='serlvetResponse' >");
+			out.write("<p id='errMsg' style='color: red; font-size: larger;'>Username or Password invalid... !</p>");
+			rs.include(req, res);
 		}
 		}
 	}

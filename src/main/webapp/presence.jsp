@@ -12,6 +12,7 @@
 <% 
 	String username = (String) session.getAttribute("username");
 	JSONArray lista = (JSONArray) session.getAttribute("lista");
+	String present = (String) session.getAttribute("present");
 %>
 
 
