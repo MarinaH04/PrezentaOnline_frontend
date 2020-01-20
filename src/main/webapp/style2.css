@@ -1,0 +1,78 @@
+body {
+	background-image: url(pencil.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.editing {
+	background-color: rgba(191, 150, 104, 0.5);
+	height: 20vh;
+	font-size: 26px;
+	border: 2px solid rgb(191, 150, 104);
+	text-align: center;
+}
+
+.editing p {
+	position: relative;
+	top:30%;
+	color: white;
+	padding: 20px;
+}
+
+.editing p:hover {
+	cursor: pointer;
+	text-decoration: underline;
+}
+#afisare {
+	color: black;
+}
+
+.formular_edit, .formular_insert {
+	display: none;
+	width: 90%;
+	margin: 0 auto;
+	background-color: rgba(117, 89, 129, 0.7);
+	
+}
+.formtext {
+	display: block;
+	width: 65%;
+	margin: 20px auto;
+	padding: 10px 0;
+}
+.formular_edit p {
+	color: white;
+	font-size: 28px;
+	text-align: center;
+}
+input[type=text], input[type=email], input[type=password]{
+	text-align: center;
+}
+
+input[type=submit]{
+	background-color: rgb(117, 89, 129);
+	border: none;
+	color: white;
+	width: 30%;
+	margin: 30px auto;
+	display: block;
+	font-size: 20px;
+	padding: 15px;
+	border: 1px solid black;
+	
+}
+
+.formular_edit span {
+	margin-left: 50px;
+	text-align: center;
+	position: relative;
+	top: 62px;
+	background-color: rgb(117, 89, 129);
+	padding: 14px;
+}
+
+.formular_logout {
+	display: none;
+}
