@@ -17,7 +17,7 @@
 
 	<servlet-mapping>
 		<servlet-name>adc</servlet-name>
-		<url-pattern>/login</url-pattern>
+		<url-pattern>/Login</url-pattern>
 	</servlet-mapping>
 
 	<servlet>

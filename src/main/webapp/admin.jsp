@@ -161,7 +161,7 @@
 	<p>Profesori: </p>
 		<table>
 		<tr>
-			<th>Students</th>
+			<th>Teacher</th>
 			<th>Username</th>
 			<th>Firstname</th>
 			<th>Lastname</th>

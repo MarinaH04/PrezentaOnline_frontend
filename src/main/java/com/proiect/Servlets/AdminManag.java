@@ -42,19 +42,22 @@ public class AdminManag extends HttpServlet{
 		String studenti = req.getParameter("studenti");
 		String profesori = req.getParameter("profesori");
 		
-		if(!studenti.equals(null)) {
-		WebResource webResourceUpdate = u.resource("http://localhost:8081/PrezentaOnline/userDTO/update");
-		String inputUpdate = "{\"username\":" + studenti + ",\"denumire\":" + profesori +"}";
-		ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class, inputUpdate);
-		if(!responseUpdate.equals(null)) {
-			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
-			PrintWriter out = res.getWriter();
-			out.write("<p id='updateMsg' style='color: green; '>Student succesfully assigned to a teacher !</p>");
-			
-			rs.include(req, res);
-		}
+		/* !!!!DE MODIFICAT */
 		
-	}
+		if (!studenti.equals(null)) {
+			WebResource webResourceUpdate = u.resource("http://localhost:8081/PrezentaOnline/userDTO/update");
+			String inputUpdate = "{\"username\":" + studenti + ",\"denumire\":" + profesori + "}";
+			ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class,
+					inputUpdate);
+			if (!responseUpdate.equals(null)) {
+				RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+				PrintWriter out = res.getWriter();
+				out.write("<p id='updateMsg' style='color: green; '>Student succesfully assigned to a teacher !</p>");
+
+				rs.include(req, res);
+			}
+
+		}
 	}
 
 }

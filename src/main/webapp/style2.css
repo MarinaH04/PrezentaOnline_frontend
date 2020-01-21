@@ -30,11 +30,14 @@ body {
 }
 
 .formular_edit, .formular_insert {
-	display: none;
+	
 	width: 90%;
 	margin: 0 auto;
 	background-color: rgba(117, 89, 129, 0.7);
 	
+}
+.formular_edit{
+	display: none;
 }
 .formtext {
 	display: block;

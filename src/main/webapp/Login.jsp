@@ -22,7 +22,7 @@
 			<div class="hidden-sm col-md-1"></div>
 			<div class="col-xl-3 col-lg-5 col-md-5 col-sm-12">
 
-				<form class="text-center p-5 formular form1" action="login"
+				<form class="text-center p-5 formular form1" action="Login"
 					method="post">
 					<input type="text" id="defaultLoginFormEmail"
 						class="form-control mb-4" name="username" placeholder="Username">
