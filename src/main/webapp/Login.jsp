@@ -15,11 +15,27 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" type="text/css" href="css/animate.css">
 </head>
 <body>
-	<div class="container-fluid mt-5 bg">
-		<div class="row mt-5">
-			<div class="hidden-sm col-md-1"></div>
+	<div class="container-fluid bg">
+	<div class="row">
+		<img src="images/student.png" alt="student"><h1 class="title">UNIVERSITATEA "LUCIAN BLAGA" SIBIU</h1>
+	</div>
+	<div class="row about">
+		
+		<div class="col-md-4">
+		<img class="animated slideInLeft" src="images/litere.jpg">
+		<img class="animated slideInLeft" src="images/studentsulbs.jpg" alt="students_ulbs">
+		</div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+		<img class="animated slideInRight" src="images/inginerie.jpg">
+		<img class="animated slideInRight" src="images/classroom.jpg">
+		</div>
+	</div>
+
 			<div class="col-xl-3 col-lg-5 col-md-5 col-sm-12">
 
 				<form class="text-center p-5 formular form1" action="Login"
@@ -29,23 +45,13 @@
 					<input type="password" id="defaultLoginFormPassword"
 						class="form-control mb-4" name="password" placeholder="Password"><br>
 					<button type="submit"
-						class="btn btn-info btn-block my-4 culoarebuton" name="submit">Log
-						In</button>
+						class="btn btn-info btn-block my-4 buttoncolor" name="submit">LOG IN</button>
 				</form>
 
 
 			</div>
 
-			<div class="hidden-sm col-md-1"></div>
 
-			<div class="col-lg-5 col-md-5 col-sm-12 text1 mt-5">
-				<div class="text2">
-					<h1>ULBS Universitatea "Lucian Blaga" Sibiu</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-					exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-				</div>
-			</div>
-		</div>
 	</div>
 	
 	<script type="text/javascript" src="js/bootstrap.js"></script>

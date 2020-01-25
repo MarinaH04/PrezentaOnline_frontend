@@ -29,28 +29,33 @@ body {
 	color: black;
 }
 
-.formular_edit, .formular_insert {
-	
+.formular_edit {
+	display: none;
 	width: 90%;
 	margin: 0 auto;
 	background-color: rgba(117, 89, 129, 0.7);
 	
 }
-.formular_edit{
+
+.formular_insert {
 	display: none;
+	width: 90%;
+	margin: 0 auto;
+	background-color: rgba(117, 89, 129, 0.7);
 }
+
 .formtext {
 	display: block;
 	width: 65%;
 	margin: 20px auto;
 	padding: 10px 0;
 }
-.formular_edit p {
+.formular_edit p, .formular_insert p {
 	color: white;
 	font-size: 28px;
 	text-align: center;
 }
-input[type=text], input[type=email], input[type=password]{
+input[type=text], input[type=email], input[type=password], select{
 	text-align: center;
 }
 
@@ -67,7 +72,7 @@ input[type=submit]{
 	
 }
 
-.formular_edit span {
+.formular_edit span, .formular_insert span {
 	margin-left: 50px;
 	text-align: center;
 	position: relative;
@@ -76,6 +81,12 @@ input[type=submit]{
 	padding: 14px;
 }
 
-.formular_logout {
+.formular_delete {
 	display: none;
+}
+
+.formular_logout {
+	width: 90%;
+	margin: 0 auto;
+	
 }

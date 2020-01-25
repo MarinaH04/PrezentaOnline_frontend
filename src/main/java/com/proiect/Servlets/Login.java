@@ -74,6 +74,8 @@ public class Login extends HttpServlet {
 		
 		/* *** Admin page ** */
 		
+		if(userType.equals("Admin")) {
+		
 		WebResource webResourceUsersType = c.resource("http://localhost:8081/PrezentaOnline/userDTO/byusertype/Admin");
 		ClientResponse responseUsersType = webResourceUsersType.type("application/json").get(ClientResponse.class);
 		JSONArray resultUserType = responseUsersType.getEntity(JSONArray.class);
@@ -137,7 +139,11 @@ public class Login extends HttpServlet {
 		List<UserShowDTO> studprof = new ArrayList<UserShowDTO>();
 		studprof.addAll(prof);
 		studprof.addAll(student);
-		
+		session.setAttribute("admin", users);
+		session.setAttribute("student", student);
+		session.setAttribute("prof", prof);
+		session.setAttribute("studprof", studprof);
+		}
 		
 		/* Courses of a student */
 		WebResource webResourceCourses = c.resource("http://localhost:8081/PrezentaOnline/userDTO/course/"+ username);
@@ -193,10 +199,7 @@ public class Login extends HttpServlet {
 		session.setAttribute("courses", courses);
 		session.setAttribute("lista", jArray);
 		session.setAttribute("users", students);
-		session.setAttribute("admin", users);
-		session.setAttribute("student", student);
-		session.setAttribute("prof", prof);
-		session.setAttribute("studprof", studprof);
+
 
 
 		if (userType.equals("Student")) {

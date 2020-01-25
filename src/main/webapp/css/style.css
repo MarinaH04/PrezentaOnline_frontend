@@ -1,0 +1,29 @@
+.bg {
+	background-image: url(graduation-slideshows.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+.title {
+	color: white;
+	padding: 15px 10px;
+}
+.about {
+	text-align: center;
+}
+.about img {
+	width: 75%;
+	margin-bottom: 35px;
+	border: 2px solid white;
+}
+.buttoncolor {
+	background-color: #ffb606;
+	color: white;
+	border: 1px solid #ffb606;
+}
+
+.buttoncolor:hover {
+	background-color: #b78103;
+	border: 1px solid #a07104;
+}

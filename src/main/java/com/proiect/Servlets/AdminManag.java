@@ -30,13 +30,16 @@ public class AdminManag extends HttpServlet{
 		Client u = Client.create();
 		WebResource webResource = u.resource("http://localhost:8081/PrezentaOnline/userDTO/insert");
 		String input = "{\"username\":" + username + ",\"firstname\":" + firstname + ",\"lastname\":" + lastname + ",\"email\":" + email + ",\"password\":" + password + ",\"tip\":" + tip + "}";
+		
 		ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
-		if(!response.equals(null)) {
-			RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
-			PrintWriter out = res.getWriter();
-			out.write("<p id='updateMsg' style='color: green; '>User succesfully inserted !</p>");
-			rs.include(req, res);
-		}
+		System.out.println("raspunsul este: "+ response.getStatus());
+		
+		RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
+		PrintWriter out = res.getWriter();
+		out.write("<p id='updateMsg' style='color: green; '>User succesfully inserted !</p>");
+		rs.include(req, res);
+			
+		
 		
 		
 		String studenti = req.getParameter("studenti");
@@ -50,11 +53,11 @@ public class AdminManag extends HttpServlet{
 			ClientResponse responseUpdate = webResourceUpdate.type("application/json").post(ClientResponse.class,
 					inputUpdate);
 			if (!responseUpdate.equals(null)) {
-				RequestDispatcher rs = req.getRequestDispatcher("admin.jsp");
-				PrintWriter out = res.getWriter();
-				out.write("<p id='updateMsg' style='color: green; '>Student succesfully assigned to a teacher !</p>");
+				RequestDispatcher rsupdate = req.getRequestDispatcher("admin.jsp");
+				PrintWriter outupdate = res.getWriter();
+				outupdate.write("<p id='updateMsg' style='color: green; '>Student succesfully assigned to a teacher !</p>");
 
-				rs.include(req, res);
+				rsupdate.include(req, res);
 			}
 
 		}
