@@ -17,4 +17,11 @@ $(document).ready(function() {
 		$(".formular_insert").css("display", "inline-block");
 	});
 
+
+    $( "a.scrollLink" ).click(function( event ) {
+        event.preventDefault();
+        $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 1000);
+    });
+
+
 });

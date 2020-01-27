@@ -1,4 +1,5 @@
 .bg {
+	height: 100vh;
 	background-image: url(graduation-slideshows.jpg);
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -11,11 +12,45 @@
 }
 .about {
 	text-align: center;
+	position: relative;
+}
+.about p{
+	color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	
 }
 .about img {
 	width: 75%;
 	margin-bottom: 35px;
 	border: 2px solid white;
+}
+
+.logInbutton {
+	background-color: #ffb606;
+	border: 1px solid #a07104;
+	padding: 10px 15px;
+	color: white;
+	font-weight: 600;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+
+.logInbutton:hover {
+	cursor: pointer;
+	background-color: #a07104;
+
+}
+
+.logInbutton:focus {
+	border: 1px solid #a07104;
+	outline: none;
+}
+.wrapperlogin {
+	background-color: gray;
+	padding-top: 10%;
 }
 .buttoncolor {
 	background-color: #ffb606;

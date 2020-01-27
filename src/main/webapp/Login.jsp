@@ -29,16 +29,31 @@
 		<img class="animated slideInLeft" src="images/litere.jpg">
 		<img class="animated slideInLeft" src="images/studentsulbs.jpg" alt="students_ulbs">
 		</div>
-		<div class="col-md-4"></div>
+		<div class="col-md-4 animated zoomIn">
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+			Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+			Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+			</p>
+		</div>
 		<div class="col-md-4">
 		<img class="animated slideInRight" src="images/inginerie.jpg">
 		<img class="animated slideInRight" src="images/classroom.jpg">
 		</div>
+		<br>
+		
 	</div>
-
+	<div class="row justify-content-center">
+		<a href="#login_form" class="scrollLink"><button class="logInbutton">LOG IN HERE</button></a>
+		
+	</div>
+	</div>
+	
+	
+	<div class="container-fluid wrapperlogin">
+	<div class="row justify-content-center">
 			<div class="col-xl-3 col-lg-5 col-md-5 col-sm-12">
 
-				<form class="text-center p-5 formular form1" action="Login"
+				<form id="login_form" class="text-center p-5 formular form1" action="Login"
 					method="post">
 					<input type="text" id="defaultLoginFormEmail"
 						class="form-control mb-4" name="username" placeholder="Username">
@@ -51,7 +66,7 @@
 
 			</div>
 
-
+	</div>
 	</div>
 	
 	<script type="text/javascript" src="js/bootstrap.js"></script>
